@@ -9,15 +9,8 @@ public class ChallengeUI : MonoBehaviour
     public void UpdateAppearance()
     {
         Level level;
-        if (GameManager.GetGameManager().isSandboxMode)
-        {
-            level = LevelManager.GetSandboxLevel();
-        }
-        else
-        {
-            int levelIndex = FindObjectOfType<GameManager>().levelIndex;
-            level = LevelManager.GetLevel(levelIndex);
-        }
+        int levelIndex = FindObjectOfType<GameManager>().levelIndex;
+        level = LevelManager.GetLevel(levelIndex);
 
         title.text = level.title;
         goal.text = level.goal;

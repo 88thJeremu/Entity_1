@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class RegionManager : MonoBehaviour
 {
-    public bool isSplashMenu = false;
     private List<ChargedObject> chargedObjects;
     private List<MovingChargedObject> movingChargedObjects;
     private bool isInitialized = false;
@@ -18,13 +17,13 @@ public class RegionManager : MonoBehaviour
 
     void Update()
     {
-        if (!isInitialized && AllChargedObjectsAreGenerated() && (isSplashMenu || !GameManager.GetGameManager().isSandboxMode))
+        if (!isInitialized && AllChargedObjectsAreGenerated())
         {
             FindChargedObjects();
             isInitialized = true;
         }
 
-        if (!hasAppliedStartVelocity && (isSplashMenu || !GameManager.GetGameManager().GetIsPaused()))
+        if (!hasAppliedStartVelocity && !GameManager.GetGameManager().GetIsPaused())
             ApplyStartVelocities();
     }
 
@@ -152,7 +151,7 @@ public class RegionManager : MonoBehaviour
             }
             else
             {
-                if (isSplashMenu || !GameManager.GetGameManager().GetIsPaused())
+                if (!GameManager.GetGameManager().GetIsPaused())
                     ApplyMagneticForce(mco);
                 yield return new WaitForSeconds(GameSettings.magnetInterval);
             }
