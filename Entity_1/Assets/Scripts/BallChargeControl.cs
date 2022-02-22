@@ -5,10 +5,12 @@ using UnityEngine;
 public class BallChargeControl : MonoBehaviour
 {
     private ChargedObject charge;
+    private Rigidbody rb;
 
     private void Start()
     {
         charge = gameObject.GetComponent<ChargedObject>();
+        rb = gameObject.GetComponent<Rigidbody>();
     }
     // Update is called once per frame
     void Update()
@@ -17,6 +19,22 @@ public class BallChargeControl : MonoBehaviour
         {
             charge.charge *= -1;
             charge.UpdateAppearance();
+        }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Magnetized"))
+        {
+            rb.useGravity = false;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Magnetized"))
+        {
+            rb.useGravity = true;
         }
     }
 }
