@@ -15,7 +15,7 @@ public class BallChargeControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z) && charge != null)
+        if (Input.GetMouseButtonDown(0) && charge != null)
         {
             charge.charge *= -1;
             charge.UpdateAppearance();

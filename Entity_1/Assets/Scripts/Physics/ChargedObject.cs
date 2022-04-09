@@ -39,7 +39,6 @@ public class ChargedObject : MonoBehaviour
 
     public void UpdateAppearance()
     {
-        Debug.Log("Test");
         Color color;
         if (charge > 0)
             color = Color.red;

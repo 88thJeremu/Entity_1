@@ -35,7 +35,7 @@ public class CameraMovement : MonoBehaviour
         if (target)
         {
             Transform targetTransform = target.transform;
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButton(1))
             {
                 velocityX += xSpeed * Input.GetAxis("Mouse X") * distance * 0.02f;
                 velocityY += ySpeed * Input.GetAxis("Mouse Y") * 0.02f;

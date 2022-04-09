@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public enum GameMenuModes
 {
@@ -81,13 +82,13 @@ public class GameplayUI : MonoBehaviour
     private void RestartLevel()
     {
         GameManager.GetGameManager().SaveScore();
-        Application.LoadLevel(Application.loadedLevel);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void GotoMainMenu()
     {
         GameManager.GetGameManager().SaveScore();
-        Application.LoadLevel("Main Menu");
+        SceneManager.LoadScene("Main Menu");
     }
 
     public void HideTipsButtonClick()
@@ -150,7 +151,7 @@ public class GameplayUI : MonoBehaviour
     {
         SoundManager.PlaySound(GameSounds.click);
         int levelIndex = GameManager.GetGameManager().levelIndex + 1;
-        Application.LoadLevel(LevelManager.GetSceneIndexFromLevelIndex(levelIndex));
+        SceneManager.LoadScene(LevelManager.GetSceneIndexFromLevelIndex(levelIndex));
     }
 
     public void RestartLevelButtonClick()
