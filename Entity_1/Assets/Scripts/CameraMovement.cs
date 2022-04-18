@@ -49,10 +49,11 @@ public class CameraMovement : MonoBehaviour
 
             distance = Mathf.Clamp(distance - Input.GetAxis("Mouse ScrollWheel") * 5, distanceMin, distanceMax);
             RaycastHit hit;
-            if (Physics.Linecast(targetTransform.position, transform.position, out hit))
+            if (Physics.SphereCast(targetTransform.position, 0.1f, transform.position - targetTransform.position, out hit))
             {
                 distance -= hit.distance;
             }
+
             Vector3 negDistance = new Vector3(0.0f, 0.0f, -distance);
             Vector3 position = rotation * negDistance + targetTransform.position;
 
