@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Magnetized
   - DeathBox
+  - DialogueUI
   layers:
   - Default
   - TransparentFX
