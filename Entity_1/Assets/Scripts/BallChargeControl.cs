@@ -7,10 +7,12 @@ public class BallChargeControl : MonoBehaviour
 {
     private ChargedObject charge;
     private Rigidbody rb;
+    private Vector3 checkpoint;
     private void Start()
     {
         charge = gameObject.GetComponent<ChargedObject>();
         rb = gameObject.GetComponent<Rigidbody>();
+        checkpoint = transform.position;
     }
     // Update is called once per frame
     void Update()
@@ -42,7 +44,12 @@ public class BallChargeControl : MonoBehaviour
     {
         if (other.gameObject.CompareTag("DeathBox"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            transform.position = checkpoint;
+            rb.velocity = Vector3.zero;
+        }
+        if (other.gameObject.CompareTag("Checkpoint"))
+        {
+            checkpoint = other.transform.position;
         }
     }
 }
